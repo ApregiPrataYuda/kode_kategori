@@ -63,7 +63,6 @@ class SubClassDataModels extends CI_Model {
           $this->db->where('subclass_id',$post['subclass_id']);
           $this->db->update('tk_subclass', $saved);
       }
-
       public function delete($subclass_id)
   {
     $this->db->where('subclass_id',$subclass_id);

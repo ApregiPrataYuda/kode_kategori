@@ -5,7 +5,7 @@ class KategoriModels extends CI_Model {
 
 public function getAll()
 {
-    return $this->db->query("SELECT tb3.status, tb1.kode_class, tb1.nama_class, tb1.kode_subclass, tb1.nama_subclass, tb1.kode_kategori, tb1.nama_kategori, tb1.created 
+    return $this->db->query("SELECT tb3.status, tb1.kategori_id, tb1.kode_class, tb1.nama_class, tb1.kode_subclass, tb1.nama_subclass, tb1.kode_kategori, tb1.nama_kategori, tb1.created 
     FROM tk_kategori AS tb1 
     LEFT JOIN tk_subclass AS tb2 
     ON tb1.kode_subclass = tb2.kode_subclass
@@ -60,5 +60,16 @@ public function getAll()
     $batas = sprintf("%03d", $kode);
     $kodetampil =  $kode_subclass . $batas;  //format kode
     return $kodetampil;
+  }
+
+
+  public function getid($kategori_id = null)
+  {
+     $this->db->from('tk_kategori');
+       if ($kategori_id != null) {
+             $this->db->where('kategori_id',$kategori_id);
+       }
+           $query = $this->db->get();
+            return $query;
   }
 }

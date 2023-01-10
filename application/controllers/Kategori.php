@@ -44,4 +44,16 @@ class Kategori extends CI_Controller {
               }
         }
     }
+
+
+    public function Edit_Kategori($id)
+    {
+
+        $query = $this->KategoriModels->getid($id);
+        if ($query->num_rows() > 0) {
+             $updated = $query->row();
+            $data = array('row' => $updated, );
+            $this->template->load('template','Kategori/KategoriEdit');
+        }
+    }
 }
