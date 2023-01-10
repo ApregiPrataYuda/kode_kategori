@@ -34,8 +34,8 @@
           </div>
 
           <div class="col-md-2 <?= form_error('kode_class') ? 'has-error' : null ?>">
-            <label for="kode_class"><span class="badge badge-outline-danger text-sm">Kode Class</span> </label>
-            <input type="text" class="form-control" value="<?= $row->kode_class?>" name="kode_class" id="kode_class" readonly>
+            <!-- <label for="kode_class"><span class="badge badge-outline-danger text-sm">Kode Class</span> </label> -->
+            <input type="hidden" class="form-control" value="<?= $row->kode_class?>" name="kode_class" id="kode_class" readonly>
             <small class="text-danger" style="font-style: italic "><span class="badge badge-danger"><?= form_error('kode_class') ?></span></small>
           </div>
         </div>

@@ -8,8 +8,14 @@ class ClassDataModels extends CI_Model {
    return $this->db->query("SELECT * FROM tk_class ORDER BY kode_class DESC")->result();
   }
 
+  public function gets()
+  {
+   return $this->db->query("SELECT * FROM tk_class WHERE status = 'Aktif' ORDER BY kode_class DESC")->result();
+  }
+
   public function add($post)
   {
+    
       $saved = [
          'nama_class' => $post['nama_class'],
          'kode_class' => $post['kode_class'],
@@ -65,5 +71,7 @@ class ClassDataModels extends CI_Model {
                $query = $this->db->get();
                 return $query;
       }
+
+      
     }
 	

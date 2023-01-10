@@ -55,6 +55,7 @@ class ClassData extends CI_Controller {
     public function Process()
     {
         $post = $this->input->post(null, TRUE);
+        
         $this->ClassDataModels->edit($post);
         if ($this->db->affected_rows() > 0 ) {
             $this->session->set_flashdata('pesan','updated Success');
@@ -65,6 +66,8 @@ class ClassData extends CI_Controller {
 
     public function delete($id)
     {
+
+        
        $this->ClassDataModels->delete($id);
        if ($this->db->affected_rows() > 0 ) {
         $this->session->set_flashdata('pesan','Deleted Success');
