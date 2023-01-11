@@ -53,7 +53,29 @@ class Kategori extends CI_Controller {
         if ($query->num_rows() > 0) {
              $updated = $query->row();
             $data = array('row' => $updated, );
-            $this->template->load('template','Kategori/KategoriEdit');
+            $this->template->load('template','Kategori/KategoriEdit', $data);
         }
+    }
+
+
+    public function Process()
+    {
+        $post = $this->input->post(null, TRUE);
+
+        $this->KategoriModels->edit($post);
+
+        if ($this->db->affected_rows() > 0) {
+            $this->session->set_flashdata('pesan', 'data Berhasil di update');
+            redirect('Kategori');
+          }
+    }
+
+    public function delete($kategori_id)
+    {
+       $this->KategoriModels->delete($kategori_id);
+       if ($this->db->affected_rows() > 0) {
+        $this->session->set_flashdata('pesan', 'data Berhasil di Hapus');
+        redirect('Kategori');
+       }
     }
 }

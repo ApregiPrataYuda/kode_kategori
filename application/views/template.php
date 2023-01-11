@@ -119,7 +119,7 @@
                 <ul class="nav nav-treeview ">
                   <li class="nav-item">
                     <a style="color: RGB(245, 245, 245);" href="<?= site_url('ClassData') ?>" class="nav-link">
-                      <i class="far fa-stop-circle nav-icon"></i>
+                      <i class="far fa-circle nav-icon"></i>
                       <p style="color: RGB(245, 245, 245);">Class</p>
                     </a>
                   </li>
@@ -128,7 +128,7 @@
                 <ul class="nav nav-treeview ">
                   <li class="nav-item">
                     <a style="color: RGB(245, 245, 245);" href="<?= site_url('SubClassData') ?>" class="nav-link">
-                      <i class="far fa-stop-circle nav-icon"></i>
+                      <i class="far fa-circle nav-icon"></i>
                       <p style="color: RGB(245, 245, 245);">SubClass</p>
                     </a>
                   </li>
@@ -138,8 +138,19 @@
                 <ul class="nav nav-treeview ">
                   <li class="nav-item">
                     <a style="color: RGB(245, 245, 245);" href="<?= site_url('Kategori') ?>" class="nav-link">
-                      <i class="far fa-stop-circle nav-icon"></i>
+                      <i class="far fa-circle nav-icon"></i>
                       <p style="color: RGB(245, 245, 245);">Kategori</p>
+                    </a>
+                  </li>
+                </ul>
+
+
+
+                <ul class="nav nav-treeview ">
+                  <li class="nav-item">
+                    <a style="color: RGB(245, 245, 245);" href="<?= site_url('SubKategori') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p style="color: RGB(245, 245, 245);">SubKategori</p>
                     </a>
                   </li>
                 </ul>
@@ -394,6 +405,7 @@
       return this.href == url;
     }).parentsUntil(".nav-sidebar > .nav-treeview").addClass('menu-open').prev('a').addClass('active');
   </script>
+
 
 </body>
 

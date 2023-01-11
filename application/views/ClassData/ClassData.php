@@ -64,8 +64,8 @@
                        </td> 
                   
                       <td>
-                        <a href="<?=site_url('ClassData/delete/'. $data->class_id)?>" class="btn btn-xs btn-outline-danger"><i class="fa fa-trash"></i></a>
-                        <a href="<?=site_url('ClassData/edits/'. $data->class_id)?>" class="btn btn-xs btn-outline-secondary"><i class="fa fa-edit"></i></a>
+                        <a href="<?=site_url('ClassData/delete/'. $data->class_id)?>" id="btn-hapus" class="btn btn-xs btn-outline-danger"><i class="fa fa-trash"></i></a>
+                        <a href="<?=site_url('ClassData/edits/'. $data->class_id)?>"  class="btn btn-xs btn-outline-secondary"><i class="fa fa-edit"></i></a>
                       </td>
                     </tr>
                    <?php   } ?>

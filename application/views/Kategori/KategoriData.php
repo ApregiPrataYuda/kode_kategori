@@ -55,8 +55,8 @@
                         <td><?= $data->kode_kategori?></td>
                         <td><?= $data->nama_kategori?></td>
                         <td>
-                        <a href="" class="btn btn-xs btn-outline-danger"><i class="fa fa-trash"></i></a>
-                      <a href="<?= site_url('Kategori/Edit_Kategori/'.$data->kategori_id)?>" class="btn btn-xs btn-outline-warning"><i class="fa fa-edit"></i></a>
+                        <a href="<?= site_url('Kategori/delete/'.$data->kategori_id)?>" id="btn-hapus" class="btn btn-xs btn-outline-danger"><i class="fa fa-trash"></i></a>
+                      <a href="<?= site_url('Kategori/Edit_Kategori/'.$data->kategori_id)?>"  class="btn btn-xs btn-outline-warning"><i class="fa fa-edit"></i></a>
                         </td>
                     </tr>
                  <?php } ?>

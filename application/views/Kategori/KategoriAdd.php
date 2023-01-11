@@ -44,8 +44,8 @@
           </div>
 
           <div class="col-md-2">
-            <label for="kode_kategori"><span class="badge badge-outline-danger text-sm">Kode Kategori</span> </label>
-            <input type="text" class="form-control" value="" name="kode_kategori" id="kode_kategori" readonly>
+            <!-- <label for="kode_kategori"><span class="badge badge-outline-danger text-sm">Kode Kategori</span> </label> -->
+            <input type="hidden" class="form-control" value="" name="kode_kategori" id="kode_kategori" readonly>
           </div>
         </div>
 

@@ -40,6 +40,28 @@ public function getAll()
     }
 
 
+
+    public function edit($post)
+    {
+          $params = [
+              'nama_kategori' => $post['nama_kategori']
+          ];
+          $this->db->where('kategori_id', $post['kategori_id']);
+          $this->db->update('tk_kategori',$params);
+    }
+
+
+
+    public function delete($kategori_id)
+    {
+      $this->db->where('kategori_id', $kategori_id);
+      $this->db->delete('tk_kategori');
+    }
+
+
+
+
+
   public function kodeKategori($kode_subclass)
   {
     $this->db->select('RIGHT(tk_kategori.kode_kategori,3) as kode_kategori', FALSE);

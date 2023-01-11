@@ -23,13 +23,14 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-      <form action="<?= site_url('Kategori/Tambah_Kategori')?>" method="post">
+      <form action="<?= site_url('Kategori/Process')?>" method="post">
         <div class="row">
 
         
 
           <div class="col-md-5 <?= form_error('nama_kategori') ? '' : null ?>">
-            <label for="nama_kategori"><span class="badge badge-outline-secondary text-sm"> Nama Kategori*</span> </label>
+            <label for="nama_kategori"><span class="badge badge-outline-secondary text-sm"> Nama Kategori*</span></label>
+             <input type="hidden" name="kategori_id" value="<?= $row->kategori_id?>">
             <input type="text" class="form-control" value="<?= $row->nama_kategori?>" name="nama_kategori" id="nama_kategori" placeholder="Nama kategori Class ...">
             <small class="text-danger" style="font-style: italic "><span class="badge badge-danger"><?= form_error('nama_kategori') ?></span></small>
           </div>
