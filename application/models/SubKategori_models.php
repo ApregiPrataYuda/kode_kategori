@@ -55,18 +55,18 @@ class SubKategori_models extends CI_Model {
 
         $params = [
             'kode_class' => $kode_class,
-            'nama_class' =>  $nama_class,
-            'kode_subclass' =>  $kode_subclass,
-            'nama_subclass' =>  $nama_subclass,
+            'nama_class' => ucwords($nama_class),
+            'kode_subclass' => $kode_subclass,
+            'nama_subclass' => ucwords($nama_subclass),
             'kode_kategori' => $kode_kategori,
-            'nama_kategori' =>  $nama_kategori,
+            'nama_kategori' => ucwords($nama_kategori),
             'kode_subkategori' => $sendkode,
-            'nama_subkategori' =>  $post['nama_subkategori'],
-            'merk' => $post['merk'],
-            'tipe' => $post['tipe'],
-            'nama_warna' =>  $nama_warna,
-            'kode_warna' =>  $kode_warna,
-            'satuan' => $post['satuan']
+            'nama_subkategori' => ucwords($post['nama_subkategori']),
+            'merk' => ucwords($post['merk']),
+            'tipe' => ucwords($post['tipe']),
+            'nama_warna' => ucwords($nama_warna),
+            'kode_warna' => ucwords($kode_warna),
+            'satuan' => ucwords($post['satuan'])
         ];
         $this->db->insert('tk_subkategori', $params);
     }
@@ -93,18 +93,18 @@ class SubKategori_models extends CI_Model {
 
       $params = [
         'kode_class' => $kode_class,
-        'nama_class' =>  $nama_class,
-        'kode_subclass' =>  $kode_subclass,
-        'nama_subclass' =>  $nama_subclass,
+        'nama_class' => ucwords($nama_class),
+        'kode_subclass' => $kode_subclass,
+        'nama_subclass' => ucwords($nama_subclass),
         'kode_kategori' => $kode_kategori,
-        'nama_kategori' =>  $nama_kategori,
+        'nama_kategori' => ucwords($nama_kategori),
         'kode_subkategori' => $sendkode,
-        'nama_subkategori' =>  $post['nama_subkategori'],
-        'merk' => $post['merk'],
-        'tipe' => $post['tipe'],
-        'nama_warna' =>  $nama_warna,
-        'kode_warna' =>  $kode_warna,
-        'satuan' => $post['satuan']
+        'nama_subkategori' => ucwords($post['nama_subkategori']),
+        'merk' => ucwords($post['merk']),
+        'tipe' => ucwords($post['tipe']),
+        'nama_warna' => ucwords($nama_warna),
+        'kode_warna' => ucwords($kode_warna),
+        'satuan' => ucwords($post['satuan'])
     ];
     $this->db->where('id', $post['id']);
     $this->db->update('tk_subkategori',$params);

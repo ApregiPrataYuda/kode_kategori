@@ -88,6 +88,9 @@ class SubKategori extends CI_Controller {
               if ($this->db->affected_rows() > 0) {
                 $this->session->set_flashdata('pesan', 'data Berhasil di update');
                 redirect('SubKategori');
+            }else {
+                $this->session->set_flashdata('error', 'tidak ada data yg di update');
+                redirect('SubKategori');
             }
     }
 

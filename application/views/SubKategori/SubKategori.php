@@ -2,11 +2,11 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h3><span class="badge badge-secondary">SubKategori Data</span></h3>
+        <h3><span>SubKategori Data</span></h3>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a class="text-info" href="<?= site_url('Dashboard') ?>"><span class="badge badge-secondary"> Home</span></a></li>
+          <li class="breadcrumb-item"><a class="text-info" href="<?= site_url('Dashboard') ?>"><span>Home</span></a></li>
         </ol>
       </div>
     </div>

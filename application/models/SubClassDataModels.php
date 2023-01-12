@@ -20,8 +20,8 @@ class SubClassDataModels extends CI_Model {
 
        $params = [
             'kode_class' => $kode_class,
-            'nama_class' => $nama_class,
-            'nama_subclass' => $post['nama_subclass'],
+            'nama_class' => ucwords($nama_class),
+            'nama_subclass' => ucwords($post['nama_subclass']),
             'kode_subclass' => $kodesubclassview,
        ];
        $this->db->insert('tk_subclass', $params);
@@ -58,14 +58,16 @@ class SubClassDataModels extends CI_Model {
       public function edit($post)
       {
           $saved = [
-             'nama_subclass' => $post['nama_subclass']
+             'nama_subclass' => ucwords($post['nama_subclass']) 
           ];
           $this->db->where('subclass_id',$post['subclass_id']);
           $this->db->update('tk_subclass', $saved);
       }
+
+
       public function delete($subclass_id)
-  {
+    {
     $this->db->where('subclass_id',$subclass_id);
     $this->db->delete('tk_subclass');
-  }
+    }
 }

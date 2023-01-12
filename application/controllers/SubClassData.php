@@ -66,6 +66,9 @@ class SubClassData extends CI_Controller {
     if ($this->db->affected_rows() > 0 ) {
         $this->session->set_flashdata('pesan','updated Success');
         redirect('SubClassData');
+    }else {
+        $this->session->set_flashdata('error','Tidak Ada Data yang diubah');
+        redirect('SubClassData');
     }
   }
 

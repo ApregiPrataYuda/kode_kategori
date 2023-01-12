@@ -60,6 +60,9 @@ class ClassData extends CI_Controller {
         if ($this->db->affected_rows() > 0 ) {
             $this->session->set_flashdata('pesan','updated Success');
             redirect('ClassData');
+        }else {
+            $this->session->set_flashdata('error','tidak Ada yang di update');
+            redirect('ClassData');
         }
     }
 

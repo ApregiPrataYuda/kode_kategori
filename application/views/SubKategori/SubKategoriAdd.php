@@ -6,7 +6,7 @@
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a class="text-secondary" href="<?= site_url('Class') ?>"><span>Kembali ke  Class Data</span></a></li>
+          <li class="breadcrumb-item"><a class="text-secondary" href=""><span>Kembali ke  Class Data</span></a></li>
           <li class="breadcrumb-item"><span> SubKategori Form</span></a></li>
         </ol>
       </div>

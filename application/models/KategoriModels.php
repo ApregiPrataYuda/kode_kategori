@@ -30,11 +30,11 @@ public function getAll()
            
           $params = [
               'kode_class' => $kode_class,
-              'nama_class' =>   $nama_class,
+              'nama_class' =>  ucwords($nama_class),
               'kode_subclass' =>  $kode_subclass,
-              'nama_subclass' => $nama_subclass,
+              'nama_subclass' => ucwords($nama_subclass),
               'kode_kategori' => $kodesubclassview,
-              'nama_kategori' => $post['nama_kategori']
+              'nama_kategori' => ucwords($post['nama_kategori'])
           ];
           $this->db->insert('tk_kategori',$params);
     }

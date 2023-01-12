@@ -17,9 +17,9 @@ class ClassDataModels extends CI_Model {
   {
     
       $saved = [
-         'nama_class' => $post['nama_class'],
+         'nama_class' => ucwords($post['nama_class']),
          'kode_class' => $post['kode_class'],
-         'status' => $post['status']
+         'status' => ucwords($post['status'])
       ];
       $this->db->insert('tk_class', $saved);
   }
@@ -28,9 +28,9 @@ class ClassDataModels extends CI_Model {
   public function edit($post)
   {
       $saved = [
-         'nama_class' => $post['nama_class'],
+         'nama_class' => ucwords($post['nama_class']),
          'kode_class' => $post['kode_class'],
-         'status' => $post['status']
+         'status' => ucwords($post['status'])
       ];
       $this->db->where('class_id',$post['class_id']);
       $this->db->update('tk_class', $saved);
