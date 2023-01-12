@@ -112,7 +112,6 @@ class SubKategori_models extends CI_Model {
 
     public function subcode($kode_kategori, $kode_warna)
     {
-     
       $this->db->select('RIGHT(tk_subkategori.kode_subkategori,6) as kode_subkategori', FALSE);
       $this->db->where('kode_kategori', $kode_kategori);
       $this->db->where('kode_warna', $kode_warna);
@@ -133,6 +132,13 @@ class SubKategori_models extends CI_Model {
       $kodetampil =  $kode_kategori . $kode_warna . $batas;  //format kode
       // var_dump($kodetampil); die();
       return $kodetampil;
+    }
+
+
+    public function delete($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('tk_subkategori');
     }
   
 }

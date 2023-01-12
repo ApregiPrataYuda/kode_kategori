@@ -54,7 +54,6 @@ class SubKategori extends CI_Controller {
                 redirect('SubKategori');
               }
         }
-
     }
 
 
@@ -62,6 +61,7 @@ class SubKategori extends CI_Controller {
     {
         $query = $this->SubKategori_models->getid($id);
         if ($query->num_rows() > 0) {
+
            $updated = $query->row();
 
            $getdatac = $this->SubKategori_models->getc();
@@ -76,7 +76,7 @@ class SubKategori extends CI_Controller {
     public function Process()
     {
         $post = $this->input->post();
-        $kodex = explode(' | ', $post['kode_kategori']);
+            $kodex = explode(' | ', $post['kode_kategori']);
             $kode_kategori = $kodex[0];
 
             $kodez = explode(' | ', $post['kode_warna']);
@@ -84,11 +84,21 @@ class SubKategori extends CI_Controller {
 
             $sendkode =  $this->SubKategori_models->subcode($kode_kategori,  $kode_warna);
 
-        $this->SubKategori_models->edit($post, $sendkode);
-            if ($this->db->affected_rows() > 0) {
+              $this->SubKategori_models->edit($post, $sendkode);
+              if ($this->db->affected_rows() > 0) {
                 $this->session->set_flashdata('pesan', 'data Berhasil di update');
                 redirect('SubKategori');
             }
+    }
+
+
+    public function delete_subkategori($id)
+    {
+        $this->SubKategori_models->delete($id);
+        if ($this->db->affected_rows() > 0) {
+            $this->session->set_flashdata('pesan', 'data Berhasil di delete');
+            redirect('SubKategori');
+        }
     }
 
 }
