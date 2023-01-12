@@ -109,7 +109,7 @@
                 <a style="color: RGB(245, 245, 245);" href="#" class="nav-link">
                   <i class="nav-icon fas fa-folder-plus"></i>
                   <p style="color: RGB(245, 245, 245);">
-                    Data 
+                    Data Kategori
                     <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>

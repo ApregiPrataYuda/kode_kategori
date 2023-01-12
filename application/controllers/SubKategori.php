@@ -57,4 +57,38 @@ class SubKategori extends CI_Controller {
 
     }
 
+
+    public function edit_subkategori($id)
+    {
+        $query = $this->SubKategori_models->getid($id);
+        if ($query->num_rows() > 0) {
+           $updated = $query->row();
+
+           $getdatac = $this->SubKategori_models->getc();
+           $getdatakat = $this->KategoriModels->getAll();
+
+           $data = array('row' => $updated, 'loop' => $getdatac, 'loopp' => $getdatakat);
+        }
+        $this->template->load('template','SubKategori/SubKategoriEdit', $data);
+    }
+
+
+    public function Process()
+    {
+        $post = $this->input->post();
+        $kodex = explode(' | ', $post['kode_kategori']);
+            $kode_kategori = $kodex[0];
+
+            $kodez = explode(' | ', $post['kode_warna']);
+            $kode_warna = $kodez[0];
+
+            $sendkode =  $this->SubKategori_models->subcode($kode_kategori,  $kode_warna);
+
+        $this->SubKategori_models->edit($post, $sendkode);
+            if ($this->db->affected_rows() > 0) {
+                $this->session->set_flashdata('pesan', 'data Berhasil di update');
+                redirect('SubKategori');
+            }
+    }
+
 }

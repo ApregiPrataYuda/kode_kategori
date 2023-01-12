@@ -8,10 +8,26 @@ class SubKategori_models extends CI_Model {
         return $this->db->query("SELECT * FROM tk_warna ORDER BY id ASC")->result();
     }
 
+    public function getid($id)
+    {
+     $query = $this->db->query("SELECT * FROM tk_subkategori WHERE id = '$id' ");
+     return $query;
+    }
+
 
     public function getAll()
     {
-        return $this->db->query("SELECT * FROM tk_subkategori")->result();
+        return $this->db->query("SELECT d.kode_class, c.kode_subclass, b.kode_kategori, a.kode_subkategori, a.nama_subkategori, a.nama_warna,
+        a.merk, a.satuan, a.tipe, DATE(a.created) AS Tanggal_input, a.id
+        FROM tk_subkategori AS a 
+        LEFT JOIN tk_kategori AS b 
+        ON a.kode_kategori = b.kode_kategori
+        LEFT JOIN tk_subclass AS c
+        ON a.kode_subclass = c.kode_subclass
+        LEFT JOIN tk_class AS d
+        ON a.kode_class = d.kode_class
+        WHERE d.status = 'Aktif'
+        ORDER BY a.id")->result();
     }
 
 
@@ -53,9 +69,45 @@ class SubKategori_models extends CI_Model {
             'satuan' => $post['satuan']
         ];
         $this->db->insert('tk_subkategori', $params);
+    }
+
+    public function edit($post,  $sendkode)
+    {
+      $kodex = explode(' | ', $post['kode_kategori']);
+      $kode_kategori = $kodex[0];
+      $nama_kategori = $kodex[1];
 
 
+      $kodez = explode(' | ', $post['kode_warna']);
+      $kode_warna = $kodez[0];
+      $nama_warna = $kodez[1];
 
+      $kode_class = substr($sendkode, 0, 1);
+      $query = $this->db->query("SELECT nama_class FROM tk_class WHERE kode_class = '$kode_class' ")->result();
+      $nama_class = $query[0]->nama_class;
+
+
+      $kode_subclass = substr($sendkode, 0, 2);
+      $querys = $this->db->query("SELECT nama_subclass FROM tk_subclass WHERE kode_subclass = '$kode_subclass' ")->result();
+      $nama_subclass = $querys[0]->nama_subclass;
+
+      $params = [
+        'kode_class' => $kode_class,
+        'nama_class' =>  $nama_class,
+        'kode_subclass' =>  $kode_subclass,
+        'nama_subclass' =>  $nama_subclass,
+        'kode_kategori' => $kode_kategori,
+        'nama_kategori' =>  $nama_kategori,
+        'kode_subkategori' => $sendkode,
+        'nama_subkategori' =>  $post['nama_subkategori'],
+        'merk' => $post['merk'],
+        'tipe' => $post['tipe'],
+        'nama_warna' =>  $nama_warna,
+        'kode_warna' =>  $kode_warna,
+        'satuan' => $post['satuan']
+    ];
+    $this->db->where('id', $post['id']);
+    $this->db->update('tk_subkategori',$params);
     }
 
     public function subcode($kode_kategori, $kode_warna)
