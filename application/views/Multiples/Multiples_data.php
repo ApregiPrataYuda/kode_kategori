@@ -45,10 +45,20 @@
                     <th scope="col" style="width:5%;">Nik Multiple</th>
                     <th scope="col">Nama Multiple</th>
                     <th scope="col">addr Multiple</th>
+                    <th scope="col">kode Multiple</th>
                     <th scope="col" style="width:5%">Action</th>
                   </tr>
                 </thead>
                 <tbody>
+                    <?php $no=1; foreach ($row->result() as $key => $data) { ?>
+                       <tr>
+                         <td><?= $no++?></td>
+                         <td><?= $data->nik?></td>
+                         <td><?= $data->names?></td>
+                         <td><?= $data->address?></td>
+                         <td><?= $data->kode_class?></td>
+                       </tr>
+                   <?php } ?>
                  
                 </tbody>
               </table>

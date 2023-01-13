@@ -7,4 +7,11 @@ class Multiples_m extends CI_Model {
      {
        $this->db->insert('emp',$d);
      }
+
+
+     public function getdata()
+     {
+        $query = $this->db->query("SELECT * FROM emp ORDER BY id DESC");
+        return $query;
+     }
 }

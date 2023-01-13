@@ -10,7 +10,8 @@ class Multiples extends CI_Controller {
 
 	public function index()
 	{
-            $this->template->load('template','Multiples/Multiples_data');
+            $data['row'] = $this->Multiples_m->getdata();
+            $this->template->load('template','Multiples/Multiples_data', $data);
 	}
 
     public function add()
