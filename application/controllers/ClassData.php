@@ -39,6 +39,7 @@ class ClassData extends CI_Controller {
         }
     }
 
+
     public function edits($id)
     {
         $query =   $this->ClassDataModels->getid($id);
