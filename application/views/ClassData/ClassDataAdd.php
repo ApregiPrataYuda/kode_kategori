@@ -69,3 +69,21 @@
   </div>
 </section>
 
+
+<script type="text/javascript">
+    function radioValidation(){
+
+        var status = document.getElementsById('status');
+        var genValue = false;
+
+        for(var i=0; i<status.length;i++){
+            if(status[i].checked == true){
+                genValue = true;    
+            }
+        }
+        if(!genValue){
+            alert("Please Choose the status");
+            return false;
+        }
+    }
+</script>

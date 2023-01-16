@@ -164,7 +164,7 @@
                     Multiple i
                   </p>
                 </a>
-              </li>
+            </li>
 
 
               <li class="nav-item Active">
@@ -175,6 +175,16 @@
                   </p>
                 </a>
               </li>
+
+
+              <li class="nav-item Active">
+                <a style="color: RGB(245, 245, 245);" href="<?= site_url('class_mltp') ?>" class="nav-link">
+                  <i class="nav-icon  fas fa-file"></i>
+                  <p style="color: RGB(245, 245, 245);">
+                    Multiple class
+                  </p>
+                </a>
+            </li>
 
           </ul>
           </li>

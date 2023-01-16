@@ -14,4 +14,10 @@ class Multiples_m extends CI_Model {
         $query = $this->db->query("SELECT * FROM emp ORDER BY id DESC");
         return $query;
      }
+
+     public function getc()
+     {
+        $query = $this->db->query("SELECT * FROM tk_warna ORDER BY id DESC");
+        return $query;
+     }
 }

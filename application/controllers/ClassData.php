@@ -20,7 +20,7 @@ class ClassData extends CI_Controller {
     {
         $this->form_validation->set_rules('kode_class', 'Kode Class', 'required');
         $this->form_validation->set_rules('nama_class', 'Nama Class', 'required');
-        $this->form_validation->set_rules('status', 'status', 'required');
+        // $this->form_validation->set_rules('status', 'status', 'required');
         $this->form_validation->set_message('required', '{field}  masih kosong, silakan di isi dulu');
         $this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
         if ($this->form_validation->run() == FALSE) {
