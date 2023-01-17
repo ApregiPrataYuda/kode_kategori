@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?= base_url() ?>assets/backend/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="<?= base_url() ?>assets/backend/amplify/src/amplify.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url() ?>assets/backend/dist/css/adminlte.min.css">
 
@@ -257,6 +258,7 @@
   <script src="<?= base_url() ?>assets/backend/dist/js/adminlte.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="<?= base_url() ?>assets/backend/dist/js/demo.js"></script>
+  <script src="<?= base_url() ?>assets/backend/amplify/src/amplify.js" defer></script>
 
   <script src="<?= base_url() ?>assets/backend/plugins/datatables/jquery.dataTables.min.js"></script>
   <script src="<?= base_url() ?>assets/backend/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>

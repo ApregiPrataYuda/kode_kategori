@@ -64,7 +64,7 @@
                             <td><?=$value->price_total?></td>
                             <td><?=$value->total_qty?></td>
                             <td> <?php if ($value->image != null) { ?>
-                             <img class="img-fluid img-thumbnail rounded" src="<?=base_url('assets/image/'.$value->image)?>" style="width:130px">
+                             <img  class="js-amplify" src="<?=base_url('assets/image/'.$value->image)?>" style="width:130px">
                              <?php } ?></td>
                             <td><?= (str_word_count($value->description_header) > 10 ? substr($value->description_header,0,20)."[.....]" : $value->description_header)?>
                             <a id="set_dtl" class="btn btn-default btn-xs ml-3" data-description_header="<?=$value->description_header?>"  data-toggle="modal" data-target="#modal-detail" ><i class="fa fa-eye">Detail</i> </a>
