@@ -6,17 +6,33 @@ class ManipulasiDtae extends CI_Controller {
 	
 	public function index()
 	{
+        date_default_timezone_set('Asia/Jakarta');
 		
         function manipulasiTanggal($tgl,$jumlah=1,$format='days'){
             $currentDate = $tgl;
             return date('Y-m-d', strtotime($jumlah.' '.$format, strtotime($currentDate)));
         }
 
+        $tanggalacuan = '2023/01/18';
+         $tgl= date('Y/m/d');
+ 
+
+         if ($tanggalacuan > $tgl) {
+            echo "pesanan Gagal";
+         }else {
+            echo "pesanan success";
+         }
+
+         
+        // echo manipulasiTanggal($tgl,'6','months'); 
+
+
+
         // $tgl= date('Y-m-d');
         // echo manipulasiTanggal($tgl,'6','months'); 
     
         // echo manipulasiTanggal($tgl,'-6','months');
-        date_default_timezone_set('Asia/Jakarta');
+        
         // echo strtotime("1-16-2022");
 
         // $datenow = date('format[, timestamp]');
@@ -38,9 +54,12 @@ class ManipulasiDtae extends CI_Controller {
 
 
 
-echo date('d-m-Y');   '<br/>'; // 18-01-2017 
-echo date('d-m-Y', mktime( 0, 0, 0, date('n'), date('j') + 30, date('y'))); '<br/>'; // 17-02-2017
-echo date('d-m-Y', mktime( 0, 0, 0, date('n') - 1, date('j'), date('y'))); '<br/>'; // 18-12-2017
+// echo date('d-m-Y');   '<br/>'; // 18-01-2017 
+// echo date('d-m-Y', mktime( 0, 0, 0, date('n'), date('j') + 30, date('y'))); '<br/>'; // 17-02-2017
+// echo 
+
+
+
 
 	}
 }

@@ -175,8 +175,10 @@
                   </p>
                 </a>
               </li>
+              
 
-
+              
+              
               <li class="nav-item Active">
                 <a style="color: RGB(245, 245, 245);" href="<?= site_url('class_mltp') ?>" class="nav-link">
                   <i class="nav-icon  fas fa-file"></i>
@@ -184,8 +186,34 @@
                     Multiple class
                   </p>
                 </a>
-            </li>
+              </li>
+              
+              <li class="nav-item Active">
+                <a style="color: RGB(245, 245, 245);" href="<?= site_url('Product') ?>" class="nav-link">
+                  <i class="nav-icon  fas fa-file"></i>
+                  <p style="color: RGB(245, 245, 245);">
+                  Product
+                  </p>
+                </a>
+              </li>
 
+              <li class="nav-item">
+                <a style="color: RGB(245, 245, 245);" href="#" class="nav-link">
+                  <i class="nav-icon fas fa-folder-plus"></i>
+                  <p style="color: RGB(245, 245, 245);">
+                    Data Product
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview ">
+                  <li class="nav-item">
+                    <a style="color: RGB(245, 245, 245);" href="<?= site_url('Productdata') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p style="color: RGB(245, 245, 245);">Header</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
           </ul>
           </li>
           </ul>
