@@ -35,15 +35,15 @@
                 <div class="form-group col-md-3  <?= form_error('berat_satuan') ? 'has-error' : null ?>">
                 <label for="berat_satuan"><span> Berat Satuan*</span> </label>
                 <select name="berat_satuan" id="berat_satuan" class="form-control">
-                <option value="">-Select-</option>
-                <option value="0.5 MG">0.5 MG</option>
-                <option value="5 MG">5 MG</option>
-                <option value="1 KG">1 KG</option>
-                <option value="2 KG">2 KG</option>
-                <option value="3 KG">3 KG</option>
-                <option value="4 KG">4 KG</option>
-                <option value="5 KG">5 KG</option>
-                <option value="6 KG">6 KG</option>
+                <?= $berat_satuan = $this->input->post('berat_satuan') ?  $this->input->post('berat_satuan') : $row->berat_satuan ?>
+                <option value="0.5 MG" <?=$berat_satuan == '0.5 MG' ? "selected" : null?> >0.5 MG</option>
+                <option value="5 MG" <?=$berat_satuan == '5 MG' ? "selected" : null?> >5 MG</option>
+                <option value="1 KG" <?=$berat_satuan == '1 KG' ? "selected" : null?> >1 KG</option>
+                <option value="2 KG" <?=$berat_satuan == '2 KG' ? "selected" : null?> >2 KG</option>
+                <option value="3 KG" <?=$berat_satuan == '3 KG' ? "selected" : null?>>3 KG</option>
+                <option value="4 KG" <?=$berat_satuan == '4 KG' ? "selected" : null?>>4 KG</option>
+                <option value="5 KG" <?=$berat_satuan == '5 KG' ? "selected" : null?>>5 KG</option>
+                <option value="6 KG" <?=$berat_satuan == '6 KG' ? "selected" : null?>>6 KG</option>
                 </select>
                 <small class="text-danger" style="font-style: italic "><span class="badge badge-danger"><?= form_error('berat_satuan') ?></span></small>
                 </div>

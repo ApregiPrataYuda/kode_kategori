@@ -44,6 +44,7 @@
                     <th scope="col" style="width:5%">#No</th>
                     <th scope="col" style="width:5%;">kode Product</th>
                     <th scope="col" style="width:50%">Nama Product</th>
+                    <th scope="col" style="width:50%">Berat Product</th>
                     <th scope="col" style="width:50%">Kategori Product</th>
                     <th scope="col" style="width:5%">Price Total Product</th>
                     <th scope="col" style="width:5%">Qty Total Product</th>
@@ -58,6 +59,7 @@
                             <td><?= $no++?></td>
                             <td><?=$value->kode_header?></td>
                             <td><?=$value->nama_header?></td>
+                            <td><?=$value->berat_satuan?></td>
                             <td><?=$value->nama_subkategori?></td>
                             <td><?=$value->price_total?></td>
                             <td><?=$value->total_qty?></td>

@@ -5,7 +5,7 @@ class Productdatamodels extends CI_Model {
 
    public function getdataall()
    {
-     return $this->db->query("SELECT A.kode_header, A.nama_header, A.nama_subkategori, A.price_total, A.total_qty, A.image, A.description_header
+     return $this->db->query("SELECT A.kode_header, A.nama_header, A.berat_satuan, A.nama_subkategori, A.price_total, A.total_qty, A.image, A.description_header
      FROM header_product AS A 
      LEFT JOIN tk_subkategori AS B 
      ON A.kode_subkategori  = B.kode_subkategori
