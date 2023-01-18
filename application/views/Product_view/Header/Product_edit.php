@@ -24,10 +24,11 @@
     <!-- /.card-header -->
     
     <div class="card-body">
-    <?php echo form_open_multipart('Productdata/Tambahproductheader');?>
+    <?php echo form_open_multipart('Productdata/Process');?>
       <div class="row">
                 <div class="form-group col-md-4  <?= form_error('nama_header') ? 'has-error' : null ?>">
                 <label for="nama_header"><span> Nama*</span> </label>
+                <input type="hidden" name="header_id" value="<?= $row->header_id ?>">
                 <input type="text" class="form-control" name="nama_header" value="<?= $row->nama_header ?>" id="nama_header" placeholder="Nama Product Header...">
                 <small class="text-danger" style="font-style: italic "><span class="badge badge-danger"><?= form_error('nama_header') ?></span></small>
                 </div>
@@ -37,9 +38,9 @@
                 <select name="berat_satuan" id="berat_satuan" class="form-control">
                 <?= $berat_satuan = $this->input->post('berat_satuan') ?  $this->input->post('berat_satuan') : $row->berat_satuan ?>
                 <option value="0.5 MG" <?=$berat_satuan == '0.5 MG' ? "selected" : null?> >0.5 MG</option>
-                <option value="5 MG" <?=$berat_satuan == '5 MG' ? "selected" : null?> >5 MG</option>
-                <option value="1 KG" <?=$berat_satuan == '1 KG' ? "selected" : null?> >1 KG</option>
-                <option value="2 KG" <?=$berat_satuan == '2 KG' ? "selected" : null?> >2 KG</option>
+                <option value="5 MG" <?=$berat_satuan == '5 MG' ? "selected" : null?>>5 MG</option>
+                <option value="1 KG" <?=$berat_satuan == '1 KG' ? "selected" : null?>>1 KG</option>
+                <option value="2 KG" <?=$berat_satuan == '2 KG' ? "selected" : null?>>2 KG</option>
                 <option value="3 KG" <?=$berat_satuan == '3 KG' ? "selected" : null?>>3 KG</option>
                 <option value="4 KG" <?=$berat_satuan == '4 KG' ? "selected" : null?>>4 KG</option>
                 <option value="5 KG" <?=$berat_satuan == '5 KG' ? "selected" : null?>>5 KG</option>
@@ -52,11 +53,12 @@
                 <label for="kode_subkategori"><span> Kategori*</span> </label>
                 <select name="kode_subkategori" id="kode_subkategori" class="form-control">
                     <option value="">-Pilih-</option>
-                    <?php foreach ($rows as $key => $data) { ?>
-                           <option value="<?=$data->kode_subkategori?> | <?=$data->nama_subkategori?>"><?=$data->kode_subkategori?> - <?=$data->nama_subkategori?></option>
-                         <?php } ?>
-                        </select>
-                </select>
+                    <?php foreach ($getdatasubkat as $key => $data) { ?>
+                     <option value="<?= $data->kode_subkategori ?> | <?= $data->nama_subkategori ?>"
+                     <?= ($data->kode_subkategori == $row->kode_subkategori) ? 'selected' : '' ?>>
+                     <?= $data->kode_subkategori ?> - <?= $data->nama_subkategori ?></option>
+                    <?php } ?>
+                    </select>
                 <small class="text-danger" style="font-style: italic "><span class="badge badge-danger"><?= form_error('kode_subkategori') ?></span></small>
                 </div>
 
@@ -107,7 +109,7 @@
 
 
      <div class="row ml-auto mb-3 mr-5 mt-3">
-          <button type="submit" name="add" class="btn btn-outline-secondary btn-sm ml-2"> <i class="fa fa-save"></i> Simpan</button>
+          <button type="submit" name="edit" class="btn btn-outline-secondary btn-sm ml-2"> <i class="fa fa-save"></i> Simpan</button>
           <button type="Reset" class="btn btn-outline-warning btn-sm ml-2"><i class="fa fa-undo"></i> Reset</button>
         </div>
         <?php form_close()?>

@@ -39,6 +39,9 @@ class Product_models extends CI_Model {
    }
 
 
+  
+
+
    public function printkodeproduct($kode_subkategori)
    {
     $this->db->select('RIGHT(product_tb.kode_product,6) as kode_product', FALSE);

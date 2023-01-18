@@ -107,10 +107,71 @@ class Productdata extends CI_Controller {
         $query = $this->Productdatamodels->getkode($kode_header);
         if ($query->num_rows() > 0) {
              $updated = $query->row();
-             $data = array('row' => $updated );
+             $throwdatakat =  $this->Productdatamodels->getdatasub();
+             $data = array(
+                'row' => $updated, 
+                'getdatasubkat' => $throwdatakat,
+            );
         }
         $this->template->load('template','Product_view/Header/Product_edit', $data);
     }
+
+
+
+    public function Process()
+    {
+      
+        $config['upload_path']          = './assets/image/';
+        $config['allowed_types']        = 'gif|jpg|png|jpeg';
+        $config['max_size']             = 2097152;
+        $config['file_name']            = 'uploads-'.date('ymd').'-'.substr(md5(rand()),0,10);
+
+        $this->load->library('upload', $config);
+
+        $post =  $this->input->post(null, TRUE);
+
+        // var_dump($post); die();
+
+        $kodesub = explode(' | ', $post['kode_subkategori']);
+        $kode_subkategori =  $kodesub[0];
+    
+        $kode_subkatthrowdata = $this->Productdatamodels->kodeedit($kode_subkategori);
+
+        if (isset($_POST['edit'])) {
+            if (@$_FILES['image']['name']) {
+                if ($this->upload->do_upload('image'))
+                    {
+
+                        $oldimg = $this->Productdatamodels->getid($post['header_id'])->row();
+                                               if ($oldimg->image) {
+                                                   $target_file = './assets/image/'.$oldimg->image;
+                                                   unlink( $target_file);
+                                               } 
+
+                       $post['image']= $this->upload->data('file_name');
+                        $this->Productdatamodels->edit($post, $kode_subkatthrowdata);
+                        if ($this->db->affected_rows() > 0) {
+                        $this->session->set_flashdata('pesan', 'data berhasil di simpan');
+                           }
+                          redirect('Productdata'); 
+                                             }else {
+                                                    $error = $this->upload->display_errors();
+                                                    $this->session->set_flashdata('error',$error);
+                                                    redirect('Productdata'); 
+                                                  }
+            }else {
+                $post['image']= null;
+                $this->Productdatamodels->edit($post, $kode_subkatthrowdata);
+                 if ($this->db->affected_rows() > 0) {
+                  $this->session->set_flashdata('pesan', 'data berhasil di update');
+            }
+            redirect('Productdata');
+        }
+        $this->session->set_flashdata('error', 'data gagal di simpan');
+        redirect('Productdata');
+        }
+    }
+
 
     public function delete($kode_header)
     {
@@ -126,4 +187,34 @@ class Productdata extends CI_Controller {
       }
       redirect('Productdata');
     }
+
+
+// detail 
+
+
+    public function detailproduct()
+    {
+        $this->template->load('template','Product_view/Detail/Detail_data_product');
+    }
+
+    public function Tambah_detail_product()
+    {
+        $this->form_validation->set_rules('nama_product', 'Nama Product', 'required');
+        $this->form_validation->set_rules('kondisi', 'Kodisi Product', 'required');
+        $this->form_validation->set_rules('warna', 'Warna Product', 'required');
+        $this->form_validation->set_rules('type_product', 'Type Product', 'required');
+        $this->form_validation->set_rules('qty', 'Qty Product', 'required');
+        $this->form_validation->set_rules('price_satuan', 'price satuan Product', 'required');
+        $this->form_validation->set_rules('description', 'price satuan Product', 'required');
+        
+
+        $this->form_validation->set_message('required', '{field}  masih kosong, silakan di isi dulu');
+        $this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
+        if ($this->form_validation->run() == FALSE) {
+            $this->template->load('template','Product_view/Detail/Detail_add_product');
+        }else {
+            echo 'success';
+        }
+    }
+    
 }

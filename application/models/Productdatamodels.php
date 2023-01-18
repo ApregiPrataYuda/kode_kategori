@@ -47,6 +47,54 @@ class Productdatamodels extends CI_Model {
         $this->db->insert('header_product',$params);
       }
 
+
+      public function edit($post, $kode_subkatthrowdata)
+      {
+   
+       $kodesub = explode(' | ', $post['kode_subkategori']);
+       $kode_subkategori =  $kodesub[0];
+       $nama_subkategori =  $kodesub[1];
+   
+        $params = [
+            'kode_header' => $kode_subkatthrowdata,
+            'nama_header' =>  $post['nama_header'],
+            'berat_satuan' => $post['berat_satuan'],
+            'description_header' => $post['description_header'],
+            'kode_subkategori' => $kode_subkategori,
+            'nama_subkategori' => $nama_subkategori,
+            // 'image' => $post['image']
+        ];
+        if($post['image'] != null) {
+          $params['image'] = $post['image'];
+      }
+        $this->db->where('header_id', $post['header_id']);
+        $this->db->update('header_product',$params);
+      }
+
+
+      // public function edit($post, $kode_subkatthrowdata)
+      // {
+   
+      //  $kodesub = explode(' | ', $post['kode_subkategori']);
+      //  $kode_subkategori =  $kodesub[0];
+      //  $nama_subkategori =  $kodesub[1];
+   
+      //   $params = [
+      //       'kode_header' => $kode_subkatthrowdata != "" ? $kode_subkatthrowdata : null,
+      //       'nama_header' =>  $post['nama_header'] != "" ? $post['nama_header'] : null,
+      //       'berat_satuan' => $post['berat_satuan'] != "" ? $post['berat_satuan'] : null,
+      //       'description_header' => $post['description_header'] != "" ? $post['description_header'] : null,
+      //       'kode_subkategori' => $kode_subkategori != ""  ? $kode_subkategori : null,
+      //       'nama_subkategori' => $nama_subkategori != ""  ? $nama_subkategori : null,
+      //       // 'image' => $post['image']
+      //   ];
+      //   if($post['image'] != null) {
+      //     $params['image'] = $post['image'];
+      // }
+      //   $this->db->where('header_id', $post['header_id']);
+      //   $this->db->update('header_product',$params);
+      // }
+
       public function printkodeproduct($kode_subkategori)
       {
        $this->db->select('RIGHT(header_product.kode_header,6) as kode_header', FALSE);
@@ -71,10 +119,43 @@ class Productdatamodels extends CI_Model {
       }
 
 
+      public function kodeedit($kode_subkategori)
+      {
+       $this->db->select('RIGHT(header_product.kode_header,6) as kode_header', FALSE);
+         $this->db->where('kode_subkategori', $kode_subkategori);
+         $this->db->order_by('kode_header', 'DESC');
+         $this->db->limit(1);
+         $query = $this->db->get('header_product');  //cek dulu apakah ada sudah ada kode di tabel.    
+         if ($query->num_rows() <> 0) {
+           //cek kode jika telah tersedia    
+           $data = $query->row();
+           // $kode = intval($data->kode_class) + 1;
+           //cara mengambil digit dari kode kode sub class dari belakang
+           $kode = substr($data->kode_header, -3);
+         } else {
+           $kode = 1;  //cek jika kode belum terdapat pada table
+         }
+         // $tgl = date('ym');
+         $batas = sprintf("%06d", $kode);
+         $kodetampil =  $kode_subkategori . $batas;  //format kode
+         // var_dump($kodetampil); die();
+         return $kodetampil;
+      }
+
+
       public function getkode($kode_header)
     {
       $this->db->from('header_product');
-        $this->db->where('kode_header', $kode_header);
+      $this->db->where('kode_header', $kode_header);
+      $query = $this->db->get();
+      return  $query;
+    }
+
+
+    public function getid($header_id)
+    {
+      $this->db->from('header_product');
+      $this->db->where('header_id', $header_id);
       $query = $this->db->get();
       return  $query;
     }

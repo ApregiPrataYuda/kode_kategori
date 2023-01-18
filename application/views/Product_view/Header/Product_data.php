@@ -64,15 +64,15 @@
                             <td><?=$value->price_total?></td>
                             <td><?=$value->total_qty?></td>
                             <td> <?php if ($value->image != null) { ?>
-                             <img  class="js-amplify" src="<?=base_url('assets/image/'.$value->image)?>" style="width:130px">
+                             <img  src="<?=base_url('assets/image/'.$value->image)?>" class="js-amplify" style="width:130px">
                              <?php } ?></td>
-                            <td><?= (str_word_count($value->description_header) > 10 ? substr($value->description_header,0,20)."[.....]" : $value->description_header)?>
+                            <td><?= (str_word_count($value->description_header) > 5 ? substr($value->description_header,0,5)."[.....]" : $value->description_header)?>
                             <a id="set_dtl" class="btn btn-default btn-xs ml-3" data-description_header="<?=$value->description_header?>"  data-toggle="modal" data-target="#modal-detail" ><i class="fa fa-eye">Detail</i> </a>
                             </td>
                             <td>
                                 <a href="<?= site_url('Productdata/edit/'.$value->kode_header)?>" class="btn btn-sm btn-outline-warning btn-xs"><i class="fa fa-edit"></i></a>
                                 <a href="<?= site_url('Productdata/delete/'.$value->kode_header)?>" id="btn-hapus" class="btn btn-sm btn-outline-danger btn-xs"><i class="fa fa-trash"></i></a>
-                                <a href="" class="btn btn-sm btn-outline-success btn-xs"><i class="fa fa-eye">Detail</i></a>
+                                <a href="<?= site_url('Productdata/detailproduct/'.$value->kode_header)?>" class="btn btn-sm btn-outline-success btn-xs"><i class="fa fa-eye">Detail</i></a>
                             </td>
                         </tr>
                    <?php } ?>
@@ -94,7 +94,7 @@
 </section>
 
 <div class="modal fade" id="modal-detail">
-          <div class="modal-dialog modal-sm modal-info">
+          <div class="modal-dialog modal-lg modal-info">
             <div class="modal-content">
               <div class="modal-header">
                 <h6 class="modal-title">Detail Deskripsi Product</h6>
@@ -117,15 +117,16 @@
                     </div>
                     </div>
                     </div>
-                    <script>
 
 
- $(document).ready(function() {
-        $(document).on('click', '#set_dtl', function() {
-         var description_header = $(this).data('description_header');
-        $( '#description_header').text(description_header);
-                      
-        })
- }) 
-</script>
+                    
+          <script>
+          $(document).ready(function() {
+                  $(document).on('click', '#set_dtl', function() {
+                  var description_header = $(this).data('description_header');
+                  $( '#description_header').text(description_header);
+                                
+                  })
+          }) 
+          </script>
 
