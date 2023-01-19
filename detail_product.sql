@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 18, 2023 at 09:47 AM
+-- Generation Time: Jan 19, 2023 at 10:23 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -32,15 +32,25 @@ CREATE TABLE `detail_product` (
   `kode_header` varchar(50) DEFAULT '',
   `kode_product` varchar(50) DEFAULT '',
   `nama_product` varchar(100) DEFAULT '',
-  `kodisi` varchar(100) DEFAULT '',
+  `kondisi` varchar(100) DEFAULT '',
   `warna` varchar(100) DEFAULT '',
   `type_product` varchar(50) DEFAULT '',
   `qty` double DEFAULT 0,
   `price_satuan` double DEFAULT 0,
+  `total_price` double DEFAULT 0,
   `description` varchar(200) DEFAULT '',
   `created` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `detail_product`
+--
+
+INSERT INTO `detail_product` (`detail_id`, `kode_header`, `kode_product`, `nama_product`, `kondisi`, `warna`, `type_product`, `qty`, `price_satuan`, `total_price`, `description`, `created`, `updated`) VALUES
+(10, '21001001001', '210010010010001', 'laptopsssk', 'Second', 'Red', 'xv', 5, 5000, 25000, 'sdsdsdsdsdsd', '2023-01-19 07:43:52', '2023-01-19 07:43:52'),
+(11, '21001001001', '210010010010002', 'dfdf', 'New', 'Red', 'dfdfd', 1, 10000, 10000, 'sdsdsdsd', '2023-01-19 08:37:51', '2023-01-19 08:37:51'),
+(12, '11001001001', '110010010010001', 'TES', 'New', 'Blue', 'dsd', 4, 4000, 16000, 'sdsdsd', '2023-01-19 09:12:56', '2023-01-19 09:12:56');
 
 --
 -- Indexes for dumped tables
@@ -60,7 +70,7 @@ ALTER TABLE `detail_product`
 -- AUTO_INCREMENT for table `detail_product`
 --
 ALTER TABLE `detail_product`
-  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

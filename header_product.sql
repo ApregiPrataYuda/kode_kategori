@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 18, 2023 at 08:05 AM
+-- Generation Time: Jan 19, 2023 at 10:23 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -32,7 +32,7 @@ CREATE TABLE `header_product` (
   `kode_header` varchar(50) NOT NULL DEFAULT '',
   `nama_header` varchar(100) NOT NULL DEFAULT '',
   `berat_satuan` varchar(50) NOT NULL DEFAULT '',
-  `description_header` varchar(200) NOT NULL DEFAULT '',
+  `description_header` varchar(1000) NOT NULL DEFAULT '',
   `kode_subkategori` varchar(50) NOT NULL DEFAULT '',
   `nama_subkategori` varchar(200) NOT NULL DEFAULT '',
   `image` varchar(100) NOT NULL DEFAULT '',
@@ -47,8 +47,8 @@ CREATE TABLE `header_product` (
 --
 
 INSERT INTO `header_product` (`header_id`, `kode_header`, `nama_header`, `berat_satuan`, `description_header`, `kode_subkategori`, `nama_subkategori`, `image`, `total_qty`, `price_total`, `created`, `updated`) VALUES
-(13, '21001C4000006000001', 'tesdua', '5 MG', 'sasasa', '21001C4000006', 'EPPOS CASH', 'uploads-230118-fcc73d35f1.jpeg', 0, 0, '2023-01-18 06:28:00', '2023-01-18 06:28:00'),
-(14, '21001C4000006000002', 'tesf', '1 KG', 'fgfgf', '21001C4000006', 'EPPOS CASH', 'uploads-230118-dcd45c6d00.jpg', 0, 0, '2023-01-18 06:36:20', '2023-01-18 06:36:20');
+(21, '21001001001', 'Laptop asus', '1 KG', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum', '21001001', 'Laptop', 'uploads-230119-20bf4c02f8.jpg', 6, 35000, '2023-01-19 02:26:57', '2023-01-19 02:26:57'),
+(22, '11001001001', 'tshirt', '0.5 MG', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum', '11001001', 'Uniqlo Tshirt', 'uploads-230119-0f3f908626.jpeg', 4, 16000, '2023-01-19 02:32:25', '2023-01-19 02:32:25');
 
 --
 -- Indexes for dumped tables
@@ -68,7 +68,7 @@ ALTER TABLE `header_product`
 -- AUTO_INCREMENT for table `header_product`
 --
 ALTER TABLE `header_product`
-  MODIFY `header_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `header_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
