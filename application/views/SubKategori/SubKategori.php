@@ -43,7 +43,7 @@
                     <th scope="col" style="width:5%">#No</th>
                     <th scope="col" style="width: 15%;">kode Subkategori</th>
                     <th scope="col">Nama Subkategori</th>
-                    <th scope="col">Nama Warna</th>
+                    <!-- <th scope="col">Nama Warna</th> -->
                     <th scope="col" style="width: 15%;">Merk</th>
                     <th scope="col">Type</th>
                     <th scope="col">satuan</th>
@@ -56,7 +56,7 @@
                             <td><?= $no++?></td>
                             <td><?= $data->kode_subkategori ?></td>
                             <td><?= $data->nama_subkategori ?></td>
-                            <td><?= $data->nama_warna ?></td>
+                            <!-- <td><?= $data->nama_warna ?></td> -->
                             <td><?= $data->merk ?></td>
                             <td><?= $data->tipe ?></td>
                             <td><?= $data->satuan ?></td>

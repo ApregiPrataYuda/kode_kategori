@@ -29,7 +29,7 @@
        
 
 
-        <div class="col-md-3 <?= form_error('kode_warna') ? '' : null ?>">
+        <!-- <div class="col-md-3 <?= form_error('kode_warna') ? '' : null ?>">
             <label for="kode_warna"><span> kode Warna - Nama Warna*</span> </label>
             <select name="kode_warna" id="kode_warna" class="form-control">
               <option value="">-pilih-</option>
@@ -38,7 +38,7 @@
               <?php } ?> 
             </select>
             <small class="text-danger" style="font-style: italic "><span class="badge badge-danger"><?= form_error('kode_warna') ?></span></small>
-          </div>
+          </div> -->
           
         <div class="col-md-3 <?= form_error('merk') ? '' : null ?>">
             <label for="merk"><span>Nama merk*</span> </label>

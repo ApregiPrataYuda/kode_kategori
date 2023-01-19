@@ -61,7 +61,7 @@
                             <td><?=$value->nama_header?></td>
                             <td><?=$value->berat_satuan?></td>
                             <td><?=$value->nama_subkategori?></td>
-                            <td><?=$value->price_total?></td>
+                            <td><?=  indo_currency($value->price_total) ?></td>
                             <td><?=$value->total_qty?></td>
                             <td> <?php if ($value->image != null) { ?>
                              <img  src="<?=base_url('assets/image/'.$value->image)?>" class="js-amplify" style="width:130px">

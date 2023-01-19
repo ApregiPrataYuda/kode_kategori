@@ -84,6 +84,8 @@ public function getAll()
     return $kodetampil;
   }
 
+  
+
 
   public function getid($kategori_id = null)
   {

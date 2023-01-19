@@ -20,7 +20,7 @@ class SubKategori extends CI_Controller {
     {
 
         $this->form_validation->set_rules('kode_kategori', 'kode kategori', 'required');
-        $this->form_validation->set_rules('kode_warna', 'kode warna', 'required');
+        // $this->form_validation->set_rules('kode_warna', 'kode warna', 'required');
         $this->form_validation->set_rules('merk', 'merk', 'required');
         $this->form_validation->set_rules('tipe', 'tipe', 'required');
         $this->form_validation->set_rules('satuan', 'satuan', 'required');
@@ -31,10 +31,10 @@ class SubKategori extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE) {
 
-            $getdatac = $this->SubKategori_models->getc();
+            // $getdatac = $this->SubKategori_models->getc();
             $getdatakat = $this->KategoriModels->getAll();
            
-            $data = array('rows' => $getdatac, 'rowskat' => $getdatakat );
+            $data = array('rowskat' => $getdatakat );
             $this->template->load('template','SubKategori/SubKategoriAdd',$data);
            }else {
 
@@ -43,10 +43,10 @@ class SubKategori extends CI_Controller {
             $kodex = explode(' | ', $post['kode_kategori']);
             $kode_kategori = $kodex[0];
 
-            $kodez = explode(' | ', $post['kode_warna']);
-            $kode_warna = $kodez[0];
+            // $kodez = explode(' | ', $post['kode_warna']);
+            // $kode_warna = $kodez[0];
 
-            $sendkode =  $this->SubKategori_models->subcode($kode_kategori,  $kode_warna);
+            $sendkode =  $this->SubKategori_models->subcode($kode_kategori);
 
             $this->SubKategori_models->add($post, $sendkode);
             if ($this->db->affected_rows() > 0) {
@@ -64,10 +64,10 @@ class SubKategori extends CI_Controller {
 
            $updated = $query->row();
 
-           $getdatac = $this->SubKategori_models->getc();
+        //    $getdatac = $this->SubKategori_models->getc();
            $getdatakat = $this->KategoriModels->getAll();
 
-           $data = array('row' => $updated, 'loop' => $getdatac, 'loopp' => $getdatakat);
+           $data = array('row' => $updated, 'loopp' => $getdatakat);
         }
         $this->template->load('template','SubKategori/SubKategoriEdit', $data);
     }
@@ -79,10 +79,10 @@ class SubKategori extends CI_Controller {
             $kodex = explode(' | ', $post['kode_kategori']);
             $kode_kategori = $kodex[0];
 
-            $kodez = explode(' | ', $post['kode_warna']);
-            $kode_warna = $kodez[0];
+            // $kodez = explode(' | ', $post['kode_warna']);
+            // $kode_warna = $kodez[0];
 
-            $sendkode =  $this->SubKategori_models->subcode($kode_kategori,  $kode_warna);
+            $sendkode =  $this->SubKategori_models->subcodeedit($kode_kategori);
 
               $this->SubKategori_models->edit($post, $sendkode);
               if ($this->db->affected_rows() > 0) {

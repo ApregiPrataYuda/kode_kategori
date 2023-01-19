@@ -97,7 +97,7 @@ class Productdatamodels extends CI_Model {
 
       public function printkodeproduct($kode_subkategori)
       {
-       $this->db->select('RIGHT(header_product.kode_header,6) as kode_header', FALSE);
+       $this->db->select('RIGHT(header_product.kode_header,3) as kode_header', FALSE);
          $this->db->where('kode_subkategori', $kode_subkategori);
          $this->db->order_by('kode_header', 'DESC');
          $this->db->limit(1);
@@ -112,7 +112,7 @@ class Productdatamodels extends CI_Model {
            $kode = 1;  //cek jika kode belum terdapat pada table
          }
          // $tgl = date('ym');
-         $batas = sprintf("%06d", $kode);
+         $batas = sprintf("%03d", $kode);
          $kodetampil =  $kode_subkategori . $batas;  //format kode
          // var_dump($kodetampil); die();
          return $kodetampil;
@@ -121,7 +121,7 @@ class Productdatamodels extends CI_Model {
 
       public function kodeedit($kode_subkategori)
       {
-       $this->db->select('RIGHT(header_product.kode_header,6) as kode_header', FALSE);
+       $this->db->select('RIGHT(header_product.kode_header,3) as kode_header', FALSE);
          $this->db->where('kode_subkategori', $kode_subkategori);
          $this->db->order_by('kode_header', 'DESC');
          $this->db->limit(1);
@@ -136,7 +136,7 @@ class Productdatamodels extends CI_Model {
            $kode = 1;  //cek jika kode belum terdapat pada table
          }
          // $tgl = date('ym');
-         $batas = sprintf("%06d", $kode);
+         $batas = sprintf("%03d", $kode);
          $kodetampil =  $kode_subkategori . $batas;  //format kode
          // var_dump($kodetampil); die();
          return $kodetampil;
@@ -165,5 +165,134 @@ class Productdatamodels extends CI_Model {
         $this->db->where('kode_header',$kode_header);
         $this->db->delete('header_product');
     }
-}
+
+    // method product detail
+
+    public function getdataatkodeheader($kode_header)
+    {
+      $query =  $this->db->query("SELECT * FROM detail_product WHERE kode_header = '$kode_header' ORDER BY detail_id DESC")->result();
+      return $query;
+    }
+
+
+    public function kodeproductreal($cetakkodeheader)
+    {
+      $q = $this->db->query("SELECT MAX(RIGHT(kode_product,4)) AS kode_product FROM detail_product WHERE kode_header = '$cetakkodeheader' ");
+      $kd = "";
+      if($q->num_rows()>0){
+          foreach($q->result() as $k){
+              $tmp = ((int)$k->kode_product)+1;
+              $kd = sprintf("%04s", $tmp);
+          }
+      }else{
+          $kd = "0001";
+      }
+      return $cetakkodeheader.$kd;
+    }
+
+
+    public function adddetail($post, $kirimkodeheader)
+    {
+      $kodeheader = explode(' ', $post['kode_header']);
+      $cetakkodeheader = $kodeheader[0];
+
+      $price_satuan = $post['price_satuan'];
+      $qty = $post['qty'];
+
+      $sumtotal = $price_satuan * $qty;
+
+
+      $params = [
+        'kode_header' => $cetakkodeheader,
+        'kode_product' => $kirimkodeheader,
+        'nama_product' => $post['nama_product'],
+        'kondisi' => $post['kondisi'],
+        'warna' => $post['warna'],
+        'type_product' => $post['type_product'],
+        'qty' => $qty,
+        'price_satuan' =>  $price_satuan,
+        'total_price' => $sumtotal,
+        'description' => $post['description'],
+      ];
+      // var_dump($params); die();
+      $this->db->insert('detail_product',$params);
+
+      //query update tabel header
+      $sum_detail = $this->db->query("SELECT IFNULL(SUM(qty),0) AS total_qty, IFNULL(SUM(total_price),0) AS total_harga FROM detail_product WHERE kode_header = '$cetakkodeheader'")->result();
+      $kodex = [
+          'total_qty' => $sum_detail[0]->total_qty,
+          'price_total' => $sum_detail[0]->total_harga
+      ];
+      $this->db->where('kode_header', $post['kode_header']);
+      $this->db->update('header_product', $kodex);
+    }
+
+
+
+    public function deletedetails($detail_id, $kode_header)
+    {
+      $this->db->where('detail_id',$detail_id);
+      $this->db->delete('detail_product');
+
+       //query update tabel header
+       $sum_detail = $this->db->query("SELECT IFNULL(SUM(qty),0) AS total_qty, IFNULL(SUM(total_price),0) AS total_harga 
+       FROM detail_product 
+       WHERE kode_header = '$kode_header'")->result();
+       $kodex = [
+           'total_qty' => $sum_detail[0]->total_qty,
+           'price_total' => $sum_detail[0]->total_harga
+       ];
+       $this->db->where('kode_header', $kode_header);
+       $this->db->update('header_product', $kodex);
+    }
+
+
+    public function getdetail($detail_id = null)
+    {
+       $this->db->from('detail_product');
+       $this->db->order_by('detail_id', 'DESC');
+       if ($detail_id != null) {
+          $this->db->where('detail_id', $detail_id);
+       }
+       $query = $this->db->get();
+       return $query;
+    }
+
+    public function editdetail($post)
+    {
+      $kodeheader = explode(' ', $post['kode_header']);
+      $cetakkodeheader = $kodeheader[0];
+
+      $price_satuan = $post['price_satuan'];
+      $qty = $post['qty'];
+
+      $sumtotal = $price_satuan * $qty;
+
+
+      $params = [
+        'kode_header' => $cetakkodeheader,
+        // 'kode_product' => $kirimkodeheader,
+        'nama_product' => $post['nama_product'],
+        'kondisi' => $post['kondisi'],
+        'warna' => $post['warna'],
+        'type_product' => $post['type_product'],
+        'qty' => $qty,
+        'price_satuan' =>  $price_satuan,
+        'total_price' => $sumtotal,
+        'description' => $post['description'],
+      ];
+      $this->db->where('detail_id', $post['detail_id']);
+      $this->db->update('detail_product',$params);
+
+      //query update tabel header
+      $sum_detail = $this->db->query("SELECT IFNULL(SUM(qty),0) AS total_qty, IFNULL(SUM(total_price),0) AS total_harga FROM detail_product WHERE kode_header = '$cetakkodeheader'")->result();
+      $kodex = [
+          'total_qty' => $sum_detail[0]->total_qty,
+          'price_total' => $sum_detail[0]->total_harga
+      ];
+      $this->db->where('kode_header', $post['kode_header']);
+      $this->db->update('header_product', $kodex);
+    }
+  }
+
 
