@@ -36,7 +36,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="" style="color: RGB(245, 245, 245);" class="nav-link"> :</a>
+          <a href="" style="color: RGB(245, 245, 245);" class="nav-link"> <?= $this->session->userdata('access')?> : <?= $this->session->userdata('nama_user')?></a>
         </li>
       </ul>
 
@@ -69,7 +69,7 @@
             <img src="<?= base_url() ?>assets/backend/dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a style="color: RGB(245, 245, 245);" href="#" class="d-block">| <i class="fa fa-user"> <small class="font-weight-bold"></small></i></a>
+            <a style="color: RGB(245, 245, 245);" href="#" class="d-block"> | <i class="fa fa-user"> <small class="font-weight-bold"> <?= $this->session->userdata('access')?> : <?= $this->session->userdata('nama_user')?></small></i> </a>
           </div>
         </div>
 
@@ -91,6 +91,9 @@
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
+               <?php if ($this->session->userdata('access') == 'Admin') { ?>
+		 
+	
             <li style="font-style: bold; font-size: bold; color: RGB(245, 245, 245);" class="nav-header">Main </li>
 
            
@@ -214,6 +217,16 @@
                     </a>
                   </li>
                 </ul>
+              </li>
+              <?php }?>
+
+              <li class="nav-item Active">
+                <a style="color: RGB(245, 245, 245);" href="<?= site_url('Auth/logout') ?>" class="nav-link">
+                  <i class="nav-icon  fas fa-upload"></i>
+                  <p style="color: RGB(245, 245, 245);">
+                  logout
+                  </p>
+                </a>
               </li>
           </ul>
           </li>
