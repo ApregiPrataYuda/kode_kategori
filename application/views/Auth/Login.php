@@ -57,7 +57,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" name="login" class="btn btn-primary btn-block" style="background-color:RGB(40, 178, 170);">Login</button>
+            <button type="submit" name="submit" class="btn btn-primary btn-block" style="background-color:RGB(40, 178, 170);">Login</button>
           </div>
           <!-- /.col -->
         </div>

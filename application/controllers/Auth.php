@@ -20,9 +20,9 @@ class Auth extends CI_Controller {
         $this->form_validation->set_rules('username', 'username', 'required');
         $this->form_validation->set_rules('password', 'password', 'required');
         $this->form_validation->set_message('required', '{field} Tidak boleh Kosong...');
-        // $this->form_validation->set_message('max_length', '{field} Maximal 8 Karakter...');
-        // $this->form_validation->set_message('min_length', '{field} Minimal 4 Karakter...');
-        // $this->form_validation->set_message('alphanumeric', '{field} Harus Angka Atau Huruf...');
+        $this->form_validation->set_message('max_length', '{field} Maximal 8 Karakter...');
+        $this->form_validation->set_message('min_length', '{field} Minimal 4 Karakter...');
+        $this->form_validation->set_message('alphanumeric', '{field} Harus Angka Atau Huruf...');
 
         $this->form_validation->set_error_delimiters('<span class="help-block">', '</span>');
 
@@ -30,9 +30,10 @@ class Auth extends CI_Controller {
             $this->load->view('Auth/Login');
         }else {
 
-  if (isset($_POST['login'])) {
-   
+//   if (isset($_POST['submit'])) {
+    
 
+    // var_dump($_POST['submit']); die();
     $username = $this->input->post('username');
     $password = $this->input->post('password');
     $checkusername = $this->Authmodel->checkusername($username);
@@ -78,11 +79,7 @@ class Auth extends CI_Controller {
         $this->session->set_flashdata('gagal', 'username tidak terdaftar');
             redirect('Auth/Login');
     }
-
-  }
-
-
-           
+  //}
     }
 
 }

@@ -221,7 +221,6 @@ class Productdata extends CI_Controller {
             $cetakkodeheader = $kodeheader[0];
 
             $kirimkodeheader = $this->Productdatamodels->kodeproductreal($cetakkodeheader);
-            
             $this->Productdatamodels->adddetail($post, $kirimkodeheader);
 
             if ($this->db->affected_rows() > 0) {
